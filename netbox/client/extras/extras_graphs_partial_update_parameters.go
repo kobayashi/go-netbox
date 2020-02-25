@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package extras
 
@@ -31,7 +32,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/netbox-community/go-netbox/netbox/models"
+	"github.com/kobayashi/go-netbox/netbox/models"
 )
 
 // NewExtrasGraphsPartialUpdateParams creates a new ExtrasGraphsPartialUpdateParams object
@@ -79,7 +80,7 @@ for the extras graphs partial update operation typically these are written to a 
 type ExtrasGraphsPartialUpdateParams struct {
 
 	/*Data*/
-	Data *models.WritableGraph
+	Data *models.Graph
 	/*ID
 	  A unique integer value identifying this graph.
 
@@ -125,13 +126,13 @@ func (o *ExtrasGraphsPartialUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithData adds the data to the extras graphs partial update params
-func (o *ExtrasGraphsPartialUpdateParams) WithData(data *models.WritableGraph) *ExtrasGraphsPartialUpdateParams {
+func (o *ExtrasGraphsPartialUpdateParams) WithData(data *models.Graph) *ExtrasGraphsPartialUpdateParams {
 	o.SetData(data)
 	return o
 }
 
 // SetData adds the data to the extras graphs partial update params
-func (o *ExtrasGraphsPartialUpdateParams) SetData(data *models.WritableGraph) {
+func (o *ExtrasGraphsPartialUpdateParams) SetData(data *models.Graph) {
 	o.Data = data
 }
 

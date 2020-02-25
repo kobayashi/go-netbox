@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package secrets
 
@@ -35,7 +36,6 @@ type SecretsSecretRolesDeleteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *SecretsSecretRolesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewSecretsSecretRolesDeleteNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {

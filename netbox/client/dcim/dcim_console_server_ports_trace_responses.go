@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package dcim
 
@@ -27,7 +28,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/netbox-community/go-netbox/netbox/models"
+	"github.com/kobayashi/go-netbox/netbox/models"
 )
 
 // DcimConsoleServerPortsTraceReader is a Reader for the DcimConsoleServerPortsTrace structure.
@@ -38,7 +39,6 @@ type DcimConsoleServerPortsTraceReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DcimConsoleServerPortsTraceReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDcimConsoleServerPortsTraceOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +66,10 @@ type DcimConsoleServerPortsTraceOK struct {
 
 func (o *DcimConsoleServerPortsTraceOK) Error() string {
 	return fmt.Sprintf("[GET /dcim/console-server-ports/{id}/trace/][%d] dcimConsoleServerPortsTraceOK  %+v", 200, o.Payload)
+}
+
+func (o *DcimConsoleServerPortsTraceOK) GetPayload() *models.ConsoleServerPort {
+	return o.Payload
 }
 
 func (o *DcimConsoleServerPortsTraceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

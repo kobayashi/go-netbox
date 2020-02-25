@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package dcim
 
@@ -27,7 +28,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/netbox-community/go-netbox/netbox/models"
+	"github.com/kobayashi/go-netbox/netbox/models"
 )
 
 // DcimRegionsPartialUpdateReader is a Reader for the DcimRegionsPartialUpdate structure.
@@ -38,7 +39,6 @@ type DcimRegionsPartialUpdateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DcimRegionsPartialUpdateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDcimRegionsPartialUpdateOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +66,10 @@ type DcimRegionsPartialUpdateOK struct {
 
 func (o *DcimRegionsPartialUpdateOK) Error() string {
 	return fmt.Sprintf("[PATCH /dcim/regions/{id}/][%d] dcimRegionsPartialUpdateOK  %+v", 200, o.Payload)
+}
+
+func (o *DcimRegionsPartialUpdateOK) GetPayload() *models.Region {
+	return o.Payload
 }
 
 func (o *DcimRegionsPartialUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

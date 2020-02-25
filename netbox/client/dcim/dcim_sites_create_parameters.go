@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package dcim
 
@@ -30,7 +31,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/netbox-community/go-netbox/netbox/models"
+	"github.com/kobayashi/go-netbox/netbox/models"
 )
 
 // NewDcimSitesCreateParams creates a new DcimSitesCreateParams object

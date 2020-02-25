@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package dcim
 
@@ -27,7 +28,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/netbox-community/go-netbox/netbox/models"
+	"github.com/kobayashi/go-netbox/netbox/models"
 )
 
 // DcimSitesUpdateReader is a Reader for the DcimSitesUpdate structure.
@@ -38,7 +39,6 @@ type DcimSitesUpdateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DcimSitesUpdateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDcimSitesUpdateOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +66,10 @@ type DcimSitesUpdateOK struct {
 
 func (o *DcimSitesUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /dcim/sites/{id}/][%d] dcimSitesUpdateOK  %+v", 200, o.Payload)
+}
+
+func (o *DcimSitesUpdateOK) GetPayload() *models.Site {
+	return o.Payload
 }
 
 func (o *DcimSitesUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

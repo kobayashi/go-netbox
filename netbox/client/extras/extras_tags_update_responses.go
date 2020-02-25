@@ -13,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
 
 package extras
 
@@ -27,7 +28,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/netbox-community/go-netbox/netbox/models"
+	"github.com/kobayashi/go-netbox/netbox/models"
 )
 
 // ExtrasTagsUpdateReader is a Reader for the ExtrasTagsUpdate structure.
@@ -38,7 +39,6 @@ type ExtrasTagsUpdateReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ExtrasTagsUpdateReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewExtrasTagsUpdateOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +66,10 @@ type ExtrasTagsUpdateOK struct {
 
 func (o *ExtrasTagsUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /extras/tags/{id}/][%d] extrasTagsUpdateOK  %+v", 200, o.Payload)
+}
+
+func (o *ExtrasTagsUpdateOK) GetPayload() *models.Tag {
+	return o.Payload
 }
 
 func (o *ExtrasTagsUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -18,12 +18,21 @@ import (
 	"fmt"
 	"os"
 
+	runtimeclient "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/netbox-community/go-netbox/netbox/client"
 )
 
+func newNetboxWithAPIKey(host string, apiToken string) *client.NetBox {
+	authHeaderName := "Authorization"
+	authHeaderFormat := "Token %v"
+	t := runtimeclient.New(host, client.DefaultBasePath, client.DefaultSchemes)
+	t.DefaultAuthentication = runtimeclient.APIKeyAuth(authHeaderName, "header", fmt.Sprintf(authHeaderFormat, apiToken))
+	return client.New(t, strfmt.Default)
+}
+
 func main() {
-	t := client.DefaultTransportConfig().WithHost("your.netbox.host")
-	c := client.NewHTTPClientWithConfig(nil, t)
+	c := newNetboxWithAPIKey("localhost:8000", "0123456789abcdef0123456789abcdef01234567")
 
 	rs, err := c.Dcim.DcimRacksList(nil, nil)
 	if err != nil {
